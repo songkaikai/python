@@ -1,0 +1,9 @@
+# 需要禁止上传的文件夹
+Picture3/*
+yxdown/*
+
+# 禁止上传的文件类型
+# Editor directories and files
+.idea
+*.html
+*.txt

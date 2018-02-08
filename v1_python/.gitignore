@@ -1,0 +1,3 @@
+# 忽略当前文件夹下的pycache
+
+/__pycache__
