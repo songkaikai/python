@@ -220,16 +220,16 @@ for line in m_box:
 				# windows下的绝对路径
 				fileurl = 'E:\\pythonDemo\\v4_bdnews\\bdPicture\\Picture_' + subPath + '\\' + filename
 				# 把图片存到服务器路径下
-				fileurl2 = 'C:\\xampp\\htdocs\\images\\bdPicture\\Picture_' + subPath + '\\' + filename
+				fileurl2 = '\\bdPicture\\Picture_' + subPath + '\\' + filename
 				# linux下的相对路径
 				# fileurl = './bdPicture/Picture_' + subPath + '/' + filename
 				
 				# 把图片存储到本地路径下
 				#No such file or directory 需要先创建文件newsPicture
 				addPicRes = urllib.request.urlretrieve(url_parse, fileurl)
-				addPicRes2 = urllib.request.urlretrieve(url_parse, fileurl2)
+				addPicRes2 = urllib.request.urlretrieve(url_parse, 'C:\\xampp\\htdocs\\images' + fileurl2)
 				# 在列表末尾添加新的对象(压入图片路径)
-				pic_array.append(fileurl) 
+				pic_array.append(fileurl2) 
 				# print(addPicRes)
 				# print('[+] file name --- ' + filename)
 			else :
