@@ -9,8 +9,9 @@ import os
 # https://www.cnblogs.com/qq78292959/archive/2013/03/22/2975786.html
 import time  
 import re # 引入正则表达式
-# http://www.runoob.com/python3/python3-mysql.html
+# windows 下载 http://www.runoob.com/python3/python3-mysql.html
 # PyMySQL 是在 Python3.x 版本中用于连接 MySQL 服务器的一个库，Python2中则使用mysqldb。
+# ubuntu 下载 http://blog.csdn.net/RobertChenGuangzhi/article/details/49174523
 import pymysql # 引入python操作mysql的标准库
 
 '''
@@ -41,7 +42,7 @@ else :
 # exit()为python内置的退出程序的函数
 # exit()
 
-# 连接数据库 
+# 连接数据库 user为账户 passwd为密码 db需要访问的数据库名称
 conn = pymysql.connect(host="127.0.0.1",port=3306,user="root",passwd="",db="database",charset="utf8")
 # 获取游标
 cursor = conn.cursor()
@@ -200,7 +201,18 @@ for line in m_box:
 				filename = os.path.basename(url_parse) #去掉目录路径,返回文件名
 				
 				# fileurl 图片存放的路径(你可以替换成你本地的路径)
+								
+				# 正则表达式匹配反斜杠"\"，为什么是"\\\\"或是 r"\\"呢？因为在正则表达式中\为特殊符号，
+				# 为了取消它在正则表达式中的特殊意义需要加一个\就变成了\\，但是问题又来了，
+				# \也是字符串中的特殊字符，所以又要分别对两个\取消其特殊意义，即为\\\\。
+				#Python中有一个原始字符串操作符，用于那些字符串中出现特殊字符，在原始字符串中，
+				#没有转义字符和不能打印的字符。这样就可以取消了\在字符串中的转义功能，即r"\\"。
+				
+				# windows下的绝对路径
 				fileurl = 'E:\\pythonDemo\\v4_bdnews\\bdPicture\\Picture_' + subPath + '\\' + filename
+				# linux下的相对路径
+				# fileurl = './bdPicture/Picture_' + subPath + '/' + filename
+				
 				# 把图片存储到本地路径下
 				#No such file or directory 需要先创建文件newsPicture
 				addPicRes = urllib.request.urlretrieve(url_parse, fileurl)
