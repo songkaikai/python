@@ -48,6 +48,7 @@ Python抓取百度新闻词条 http://news.baidu.com/
 cmd下执行程序命令
 cd 当前盘/当前加压缩目录/v4_bdnews
 python spider_news.py
+注意：请把里面的.bat文件放在其他目录下 不然会无限循环直到你的机子卡死- -
 ```
 
 [百度新闻](http://news.baidu.com/)
