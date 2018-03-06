@@ -239,6 +239,22 @@ for line in m_box:
 		# 转译符
 		strinfo = re.compile(r'<img(.*?)>')
 		news_content = strinfo.sub('<img src="javascript:void(0)" />', news_content)
+		
+		# 替换文本到正常的本地存储的路径
+		count = 0
+		beg = 0
+		boolean = True
+		while boolean :
+			res = news_content.find('<img src="javascript:void(0)" />', beg, len(news_content))
+			if res != -1 :
+				# 替换当前图片数组中相对应下标的路径 注意含头不含尾 而且"这边之前的双引号也要舍掉
+				news_content = news_content[0 : res + 9] + pic_array[count] + news_content[res + 29 : len(news_content)]
+				beg = res + 1 # 每次都要+1不然会死循环
+				count += 1 # 每次+1获取下个图片的地址
+			else :
+				boolean = False
+		# print('\n--- 查询替换结束 ---')
+		
 		# 文本存入数据库的时候一定要把"双引号进行\\转码
 		news_content = news_content.replace('"', '\\"').replace('\n', '')
 		# 把文本内容输入到baidu_news_x_xx.txt文本
