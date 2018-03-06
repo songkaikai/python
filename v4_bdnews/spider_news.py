@@ -262,6 +262,9 @@ for line in m_box:
 		# 输入要txt文件的时候。可以不用转码
 		textWrite.write('\n\n' + news_content.replace('\n', '') + '\n\n')
 
+		# 将数组转变为字符串在存入数据库
+		pic_array = ','.join(str(i) for i in pic_array)
+		
 		# add_content = '<p class="test">测试<span>123</span></p>'
 		# 把所需要的数据存入数据库
 		# sql = "insert into baijia_news (title, content, add_time, read_count) values ('name', 'content', 'addTime', 15)"
