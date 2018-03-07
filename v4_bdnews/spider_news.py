@@ -245,6 +245,7 @@ for line in m_box:
 				# print(addPicRes)
 				# print('[+] file name --- ' + filename)
 			else :
+				pic_array.append("/error.jpg")
 				print('[-] Picture add failed!!!')
 			time.sleep(0.15)
 		# print(pic_array)
